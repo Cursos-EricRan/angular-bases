@@ -1,0 +1,25 @@
+<h1> {{ titile }} </h1>
+
+<ul>
+  <li *ngFor="let item of heroes;let idx=index">
+    {{ idx }} {{ item }}
+  </li>
+</ul>
+
+<button (click)="deleteLastHero(heroes[heroes.length-1])">Delete Last Hero</button>
+<button (click)="deleteFirstHero()">Delete First Hero</button>
+
+<ng-template #noDeleted>
+  <p>No hero deleted</p>
+</ng-template>
+
+<div *ngIf="heroesDeleted.length > 0; else noDeleted">
+  <h3>Heroes Deleted!</h3>
+  <ul>
+    <li *ngFor="let item of heroesDeleted;let idx=index;let isOdd=odd;let isEven=even">
+      {{ idx }} {{ item }}
+      <span *ngIf="isOdd">odd</span>
+      <span *ngIf="isEven">even</span>
+    </li>
+  </ul>
+</div>
